@@ -1,0 +1,21 @@
+name: paper_ui_demo
+description: A new Flutter project.
+publish_to: "none"
+version: 0.1.0
+
+environment:
+      sdk: ">=3.0.2 <4.0.0"
+
+dependencies:
+      flutter:
+            sdk: flutter
+      paper_ui:
+            path: C:/dev/projects/packages/paper-ui/paper_ui
+
+dev_dependencies:
+      flutter_test:
+            sdk: flutter
+      flutter_lints: ^2.0.0
+
+flutter:
+      uses-material-design: true
