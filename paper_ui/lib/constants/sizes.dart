@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-enum Sizes { xs, sm, md, lg, xl }
+enum Sizes { xs, sm, md, lg, xl, x2l }
 
 double getFontSize(Sizes? size) {
   switch (size) {
@@ -14,6 +14,8 @@ double getFontSize(Sizes? size) {
       return 18.0;
     case Sizes.xl:
       return 20.0;
+    case Sizes.x2l:
+      return 24.0;
     default:
       return 14.0;
   }

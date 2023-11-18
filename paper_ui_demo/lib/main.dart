@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:paper_ui/components/forms/button.dart';
+import 'package:paper_ui/paper_ui.dart' as paper;
 import 'package:paper_ui/constants/sizes.dart';
 
 void main() {
@@ -16,13 +16,13 @@ class MainApp extends StatelessWidget {
       home: Scaffold(
         body: Center(
           child: Column(mainAxisSize: MainAxisSize.min, children: [
-            Button(
+            paper.Button(
               onPressed: () {},
               text: "Button Label",
               size: Sizes.xl,
             ),
             SizedBox(height: 12),
-            Button.withIcon(
+            paper.Button.withIcon(
               color: Colors.blueAccent,
               size: Sizes.md,
               onPressed: () {
@@ -33,11 +33,17 @@ class MainApp extends StatelessWidget {
               rightIcon: Icons.chevron_right_rounded,
             ),
             SizedBox(height: 12),
-            Button.icon(
+            paper.Button.icon(
               onPressed: () {},
               bgColor: Colors.greenAccent,
               size: Sizes.lg,
-            )
+            ),
+            SizedBox(height: 12),
+            const paper.CheckBox(
+              value: true,
+              size: Sizes.x2l,
+              label: "Hello Universe",
+            ),
           ]),
         ),
       ),
