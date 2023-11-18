@@ -10,6 +10,7 @@ class CheckBox extends StatefulWidget {
   final bool value;
   final bool isDisabled;
   final void Function(bool?)? onChangeValue;
+  final IconData? icon;
 
   const CheckBox({
     Key? key,
@@ -21,6 +22,7 @@ class CheckBox extends StatefulWidget {
     this.isDisabled = false,
     this.onChangeValue,
     this.spacing = 8.0,
+    this.icon = Icons.check_rounded,
   }) : super(key: key);
 
   @override
@@ -70,7 +72,7 @@ class _CheckBoxState extends State<CheckBox> {
             ),
             child: _isChecked
                 ? Icon(
-                    Icons.check_rounded,
+                    widget.icon,
                     size: getFontSize(widget.size),
                     color: widget.isDisabled ? disabledColor : widget.color,
                   )

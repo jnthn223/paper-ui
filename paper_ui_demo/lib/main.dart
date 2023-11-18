@@ -44,6 +44,7 @@ class MainApp extends StatelessWidget {
               size: Sizes.x2l,
               label: "Hello Universe",
               spacing: 80,
+              icon: Icons.add,
             ),
           ]),
         ),
