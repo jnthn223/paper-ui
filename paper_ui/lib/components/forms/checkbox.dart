@@ -11,6 +11,21 @@ class CheckBox extends StatefulWidget {
   final bool isDisabled;
   final void Function(bool?)? onChangeValue;
   final IconData? icon;
+  final bool? crossed;
+
+  const CheckBox.crossed({
+    Key? key,
+    this.size = Sizes.sm,
+    this.color = Colors.black,
+    this.bgColor = const Color(0xFFF3C522),
+    this.label,
+    required this.value,
+    this.isDisabled = false,
+    this.onChangeValue,
+    this.spacing = 8.0,
+    this.icon = Icons.remove,
+    this.crossed = true,
+  }) : super(key: key);
 
   const CheckBox({
     Key? key,
@@ -23,6 +38,7 @@ class CheckBox extends StatefulWidget {
     this.onChangeValue,
     this.spacing = 8.0,
     this.icon = Icons.check_rounded,
+    this.crossed = false,
   }) : super(key: key);
 
   @override
@@ -57,7 +73,6 @@ class _CheckBoxState extends State<CheckBox> {
                   });
                 },
           child: Container(
-            padding: const EdgeInsets.all(4),
             decoration: BoxDecoration(
               border: Border.all(
                 color: widget.isDisabled ? disabledColor : widget.color!,
@@ -89,6 +104,10 @@ class _CheckBoxState extends State<CheckBox> {
             style: TextStyle(
               fontSize: getFontSize(widget.size),
               color: widget.isDisabled ? disabledColor : widget.color,
+              decorationThickness: 1.5,
+              decoration: (widget.crossed! && _isChecked)
+                  ? TextDecoration.lineThrough
+                  : null,
             ),
           ),
       ],

@@ -39,13 +39,15 @@ class MainApp extends StatelessWidget {
               size: Sizes.lg,
             ),
             SizedBox(height: 12),
-            const paper.CheckBox(
+            const paper.CheckBox.crossed(
               value: true,
               size: Sizes.x2l,
               label: "Hello Universe",
-              spacing: 80,
-              icon: Icons.add,
             ),
+            SizedBox(height: 12),
+            paper.InputText(
+              label: "Hello",
+            )
           ]),
         ),
       ),
