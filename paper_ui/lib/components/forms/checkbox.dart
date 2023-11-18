@@ -6,6 +6,7 @@ class CheckBox extends StatefulWidget {
   final Color? color;
   final Color? bgColor;
   final String? label;
+  final double? spacing;
   final bool value;
   final bool isDisabled;
   final void Function(bool?)? onChangeValue;
@@ -19,6 +20,7 @@ class CheckBox extends StatefulWidget {
     required this.value,
     this.isDisabled = false,
     this.onChangeValue,
+    this.spacing = 8.0,
   }) : super(key: key);
 
   @override
@@ -78,7 +80,7 @@ class _CheckBoxState extends State<CheckBox> {
                   ),
           ),
         ),
-        if (widget.label != null) const SizedBox(width: 8.0),
+        if (widget.label != null) SizedBox(width: widget.spacing),
         if (widget.label != null)
           Text(
             widget.label!,
