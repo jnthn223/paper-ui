@@ -44,10 +44,6 @@ class MainApp extends StatelessWidget {
               size: Sizes.x2l,
               label: "Hello Universe",
             ),
-            SizedBox(height: 12),
-            paper.InputText(
-              label: "Hello",
-            )
           ]),
         ),
       ),
