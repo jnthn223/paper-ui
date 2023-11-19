@@ -3,6 +3,39 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:paper_ui/constants/sizes.dart';
 import 'package:paper_ui/utils/paper_shadow.dart';
 
+/// A customizable button widget with various constructors.
+///
+/// The [Button] widget provides different constructors for creating buttons
+/// with text, icons, or custom content. It supports customization of size,
+/// background color, text color, and other properties.
+///
+/// This button widget follows a neobrutalist design, providing a wireframe-like
+/// appearance, reminiscent of unfinished UI designs. It can be used to create
+/// buttons that fit a neobrutalist or wireframe aesthetic in your Flutter app.
+///
+/// Constructors:
+/// - [Button]: Default constructor for text-based content.
+/// - [Button.icon]: Constructor for circular icon button.
+/// - [Button.withIcon]: Constructor for button with icons that can be place on either/both sides.
+/// - [Button.custom]: Named constructor for custom widget content.
+///
+/// Example:
+/// ```dart
+/// import 'package:paper_ui/components/forms/button.dart';
+/// import 'package:paper_ui/constants/sizes.dart';
+///
+/// // Create a neobrutalist wireframe button
+/// Button neobrutalistButton = Button(
+///   onPressed: () {
+///     // Handle button press
+///   },
+///   text: 'Click Me',
+///   size: Sizes.sm,
+///   bgColor: Colors.white,
+///   color: Colors.black,
+/// );
+/// ```
+
 class Button extends StatefulWidget {
   final VoidCallback onPressed;
   final Sizes? size;
@@ -10,7 +43,12 @@ class Button extends StatefulWidget {
   final Color? color;
   final Widget content;
 
-  // Default constructor for text-based content
+  /// Default constructor for text-based content
+  ///  - [onPressed]: Callback function when the button is pressed.
+  ///  - [text]: The text displayed on the button.
+  ///  - [size]: The size of the button (default is Sizes.sm).
+  ///  - [bgColor]: The background color of the button (default is Colors.white).
+  ///  - [color]: The foreground color of the button (default is Colors.black).
   Button({
     Key? key,
     required this.onPressed,
@@ -27,6 +65,12 @@ class Button extends StatefulWidget {
         ),
         super(key: key);
 
+  /// [Button.icon]: Constructor for circular icon button.
+  ///   - [onPressed]: Callback function when the button is pressed.
+  ///   - [size]: The size of the button (default is Sizes.sm).
+  ///   - [bgColor]: The background color of the button (default is Colors.white).
+  ///   - [color]: The foreground color of the button (default is Colors.black).
+  ///   - [icon]: The icon displayed on the button (default is Icons.add_a_photo_sharp).
   Button.icon({
     Key? key,
     required this.onPressed,
@@ -35,13 +79,20 @@ class Button extends StatefulWidget {
     this.color = Colors.black,
     IconData? icon,
   })  : content = Icon(
-          icon ?? Icons.add_a_photo_sharp, // You can customize the default icon
+          icon ?? Icons.add_a_photo_sharp,
           size: getFontSize(size!) + 5,
           color: color,
         ),
         super(key: key);
 
-  // Constructor for content with icon
+  /// [Button.withIcon]: Constructor for button with icons that can be place on either/both sides.
+  ///   - [onPressed]: Callback function when the button is pressed.
+  ///   - [text]: The text displayed on the button.
+  ///   - [size]: The size of the button (default is Sizes.sm).
+  ///   - [bgColor]: The background color of the button (default is Colors.white).
+  ///   - [color]: The foreground color of the button (default is Colors.black).
+  ///   - [leftIcon]: The icon on the left side of the text.
+  ///   - [rightIcon]: The icon on the right side of the text.
   Button.withIcon({
     Key? key,
     required this.onPressed,
@@ -74,7 +125,13 @@ class Button extends StatefulWidget {
         ),
         super(key: key);
 
-  // Named constructor for custom widget content
+  /// [Button.custom]: Named constructor for custom widget content.
+  ///   - [onPressed]: Callback function when the button is pressed.
+  ///   - [text]: The text displayed on the button.
+  ///   - [size]: The size of the button (default is Sizes.sm).
+  ///   - [bgColor]: The background color of the button (default is Colors.white).
+  ///   - [color]: The foreground color of the button (default is Colors.black).
+  ///   - [content]: Custom widget content for the button.
   const Button.custom({
     Key? key,
     required this.onPressed,
