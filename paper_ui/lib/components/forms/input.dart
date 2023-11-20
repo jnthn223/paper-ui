@@ -8,18 +8,7 @@ class InputText extends StatefulWidget {
   final String? Function(String?)? validator;
   final ValueChanged<String> onChange;
   final InputDecoration? decoration;
-  final String initialValue;
-
-  const InputText.unstyled({
-    super.key,
-    this.obscureText = false,
-    this.readOnly = true,
-    this.enabled = true,
-    this.validator,
-    required this.onChange,
-    this.decoration,
-    required this.initialValue,
-  });
+  final String? initialValue;
 
   InputText({
     super.key,
@@ -32,7 +21,7 @@ class InputText extends StatefulWidget {
     this.validator,
     required this.onChange,
     this.obscureText = false,
-    required this.initialValue,
+    this.initialValue,
   }) : decoration = InputDecoration(
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(16),
@@ -47,12 +36,40 @@ class InputText extends StatefulWidget {
           ),
           errorBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(16),
-            borderSide: BorderSide(
-                width: 2.0, // Specify the border width
-                color: errorColor!),
+            borderSide: BorderSide(width: 2.0, color: errorColor!),
           ),
           label: Text(label),
         );
+  const InputText.underline({
+    super.key,
+    this.obscureText = false,
+    this.readOnly = true,
+    this.enabled = true,
+    this.validator,
+    required this.onChange,
+    this.initialValue,
+  }) : decoration = const InputDecoration(
+          enabledBorder: UnderlineInputBorder(
+            borderSide: BorderSide(width: 2.0, color: Colors.black),
+          ),
+          focusedBorder: UnderlineInputBorder(
+            borderSide: BorderSide(width: 2.0, color: Colors.black),
+          ),
+          errorBorder: UnderlineInputBorder(
+            borderSide: BorderSide(width: 2.0, color: Colors.redAccent),
+          ),
+        );
+
+  const InputText.unstyled({
+    super.key,
+    this.obscureText = false,
+    this.readOnly = true,
+    this.enabled = true,
+    this.validator,
+    required this.onChange,
+    this.decoration,
+    this.initialValue,
+  });
 
   @override
   State<InputText> createState() => _InputTextState();
@@ -65,7 +82,7 @@ class _InputTextState extends State<InputText> {
   void initState() {
     super.initState();
     // Set the initial value when the widget is initialized
-    _textEditingController.text = widget.initialValue;
+    _textEditingController.text = widget.initialValue ?? "";
   }
 
   @override
