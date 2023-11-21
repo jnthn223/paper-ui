@@ -9,6 +9,7 @@ class InputText extends StatefulWidget {
   final ValueChanged<String> onChange;
   final InputDecoration? decoration;
   final String? initialValue;
+  final TextInputType? inputType;
 
   InputText({
     super.key,
@@ -22,6 +23,7 @@ class InputText extends StatefulWidget {
     required this.onChange,
     this.obscureText = false,
     this.initialValue,
+    this.inputType,
   }) : decoration = InputDecoration(
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(16),
@@ -48,6 +50,7 @@ class InputText extends StatefulWidget {
     this.validator,
     required this.onChange,
     this.initialValue,
+    this.inputType,
   }) : decoration = const InputDecoration(
           enabledBorder: UnderlineInputBorder(
             borderSide: BorderSide(width: 2.0, color: Colors.black),
@@ -69,6 +72,7 @@ class InputText extends StatefulWidget {
     required this.onChange,
     this.decoration,
     this.initialValue,
+    this.inputType,
   });
 
   @override
@@ -89,6 +93,7 @@ class _InputTextState extends State<InputText> {
   Widget build(BuildContext context) {
     return TextField(
       controller: _textEditingController,
+      keyboardType: widget.inputType ?? TextInputType.text,
       obscureText: widget.obscureText!,
       enabled: widget.enabled,
       onTapOutside: (PointerDownEvent event) {
