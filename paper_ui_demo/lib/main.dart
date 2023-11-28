@@ -21,29 +21,42 @@ class MainApp extends StatelessWidget {
               text: "Button Label",
               size: Sizes.xl,
             ),
-            SizedBox(height: 12),
+            const SizedBox(height: 12),
             paper.Button.withIcon(
               color: Colors.blueAccent,
               size: Sizes.md,
               onPressed: () {
                 _showAlertDialog(context);
-                print("Hello");
               },
               text: "Button With Icon",
               rightIcon: Icons.chevron_right_rounded,
             ),
-            SizedBox(height: 12),
+            const SizedBox(height: 12),
             paper.Button.icon(
               onPressed: () {},
               bgColor: Colors.greenAccent,
               size: Sizes.lg,
             ),
-            SizedBox(height: 12),
+            const SizedBox(height: 12),
             const paper.CheckBox.crossed(
               value: true,
               size: Sizes.x2l,
-              label: "Hello Universe",
+              label: "Hello World",
             ),
+            paper.InputText(
+              onChange: (value) {
+                return;
+              },
+              hint: "Hello",
+              label: "Hellox",
+              initialValue: "Initial Value",
+            ),
+            const SizedBox(height: 12),
+            paper.Editable(
+              size: Sizes.x2l,
+              onChanged: (value) {},
+              text: "Editable",
+            )
           ]),
         ),
       ),
@@ -55,14 +68,14 @@ class MainApp extends StatelessWidget {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text("Alert"),
-          content: Text("Button Clicked!"),
+          title: const Text("Alert"),
+          content: const Text("Button Clicked!"),
           actions: [
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: Text("OK"),
+              child: const Text("OK"),
             ),
           ],
         );

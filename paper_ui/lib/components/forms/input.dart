@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:paper_ui/constants/sizes.dart';
 
 class InputText extends StatefulWidget {
   final bool? obscureText;
@@ -9,7 +10,10 @@ class InputText extends StatefulWidget {
   final ValueChanged<String> onChange;
   final InputDecoration? decoration;
   final String? initialValue;
+  final Sizes? size;
   final TextInputType? inputType;
+  final Function()? onLoseFocus;
+  final bool? autoFocus;
 
   InputText({
     super.key,
@@ -24,6 +28,9 @@ class InputText extends StatefulWidget {
     this.obscureText = false,
     this.initialValue,
     this.inputType,
+    this.onLoseFocus,
+    this.size,
+    this.autoFocus,
   }) : decoration = InputDecoration(
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(16),
@@ -51,6 +58,9 @@ class InputText extends StatefulWidget {
     required this.onChange,
     this.initialValue,
     this.inputType,
+    this.onLoseFocus,
+    this.size,
+    this.autoFocus,
   }) : decoration = const InputDecoration(
           enabledBorder: UnderlineInputBorder(
             borderSide: BorderSide(width: 2.0, color: Colors.black),
@@ -73,6 +83,9 @@ class InputText extends StatefulWidget {
     this.decoration,
     this.initialValue,
     this.inputType,
+    this.onLoseFocus,
+    this.size,
+    this.autoFocus,
   });
 
   @override
@@ -91,16 +104,28 @@ class _InputTextState extends State<InputText> {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
-      controller: _textEditingController,
-      keyboardType: widget.inputType ?? TextInputType.text,
-      obscureText: widget.obscureText!,
-      enabled: widget.enabled,
-      onTapOutside: (PointerDownEvent event) {
-        FocusScope.of(context).unfocus();
-      },
-      cursorColor: Colors.black,
-      decoration: widget.decoration,
+    return DefaultTextStyle(
+      style: GoogleFonts.rubik(
+        color: Colors.black,
+        fontSize: getFontSize(widget.size ?? Sizes.sm),
+      ),
+      child: TextField(
+        style: DefaultTextStyle.of(context).style.apply(fontSizeFactor: 1.8),
+        controller: _textEditingController,
+        keyboardType: widget.inputType ?? TextInputType.text,
+        obscureText: widget.obscureText!,
+        enabled: widget.enabled,
+        onTapOutside: (PointerDownEvent event) {
+          if (widget.onLoseFocus != null) {
+            widget.onLoseFocus!();
+          }
+          FocusScope.of(context).unfocus();
+        },
+        cursorColor: Colors.black,
+        decoration: widget.decoration,
+        textAlignVertical: TextAlignVertical.center,
+        autofocus: widget.autoFocus ?? false,
+      ),
     );
   }
 
