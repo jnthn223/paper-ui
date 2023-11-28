@@ -39,6 +39,7 @@ class _EditableState extends State<Editable> {
       },
       child: isEditing
           ? InputText.underline(
+              textController: _textEditingController,
               initialValue: widget.text,
               autoFocus: true,
               onLoseFocus: () {

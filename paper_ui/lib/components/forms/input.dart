@@ -14,6 +14,8 @@ class InputText extends StatefulWidget {
   final TextInputType? inputType;
   final Function()? onLoseFocus;
   final bool? autoFocus;
+  final Widget? suffixIcon;
+  final TextEditingController? textController;
 
   InputText({
     super.key,
@@ -31,6 +33,8 @@ class InputText extends StatefulWidget {
     this.onLoseFocus,
     this.size,
     this.autoFocus,
+    this.suffixIcon,
+    this.textController,
   }) : decoration = InputDecoration(
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(16),
@@ -49,7 +53,7 @@ class InputText extends StatefulWidget {
           ),
           label: Text(label),
         );
-  const InputText.underline({
+  InputText.underline({
     super.key,
     this.obscureText = false,
     this.readOnly = true,
@@ -61,7 +65,8 @@ class InputText extends StatefulWidget {
     this.onLoseFocus,
     this.size,
     this.autoFocus,
-  }) : decoration = const InputDecoration(
+    this.textController,
+  })  : decoration = const InputDecoration(
           enabledBorder: UnderlineInputBorder(
             borderSide: BorderSide(width: 2.0, color: Colors.black),
           ),
@@ -71,6 +76,12 @@ class InputText extends StatefulWidget {
           errorBorder: UnderlineInputBorder(
             borderSide: BorderSide(width: 2.0, color: Colors.redAccent),
           ),
+        ),
+        suffixIcon = IconButton(
+          icon: const Icon(Icons.clear),
+          onPressed: () {
+            textController?.clear();
+          },
         );
 
   const InputText.unstyled({
@@ -86,6 +97,8 @@ class InputText extends StatefulWidget {
     this.onLoseFocus,
     this.size,
     this.autoFocus,
+    this.suffixIcon,
+    this.textController,
   });
 
   @override
@@ -93,13 +106,30 @@ class InputText extends StatefulWidget {
 }
 
 class _InputTextState extends State<InputText> {
-  final TextEditingController _textEditingController = TextEditingController();
-
+  late TextEditingController _textEditingController;
   @override
   void initState() {
     super.initState();
     // Set the initial value when the widget is initialized
-    _textEditingController.text = widget.initialValue ?? "";
+    // Initialize the _textEditingController using the widget.textController
+    if (widget.textController != null) {
+      _textEditingController = widget.textController!;
+    } else {
+      // Create a new TextEditingController if widget.textController is null
+      _textEditingController =
+          TextEditingController(text: widget.initialValue ?? "");
+    }
+  }
+
+  IconButton _clearButton() {
+    return IconButton(
+      icon: Icon(Icons.clear),
+      onPressed: textClear,
+    );
+  }
+
+  void textClear() {
+    _textEditingController.clear();
   }
 
   @override
@@ -122,7 +152,8 @@ class _InputTextState extends State<InputText> {
           FocusScope.of(context).unfocus();
         },
         cursorColor: Colors.black,
-        decoration: widget.decoration,
+        decoration: widget.decoration?.copyWith(
+            suffixIcon: widget.suffixIcon, suffixIconColor: Colors.black),
         textAlignVertical: TextAlignVertical.center,
         autofocus: widget.autoFocus ?? false,
       ),
