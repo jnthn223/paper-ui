@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:paper_ui/paper_ui.dart' as paper;
 import 'package:paper_ui/constants/sizes.dart';
+import 'package:paper_ui_demo/components/select_demo.dart';
 
 void main() {
   runApp(const MainApp());
@@ -56,7 +57,9 @@ class MainApp extends StatelessWidget {
               size: Sizes.x2l,
               onChange: (value) {},
               text: "Editable",
-            )
+            ),
+            const SizedBox(height: 12),
+            const SelectDemo(),
           ]),
         ),
       ),
