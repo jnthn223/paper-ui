@@ -54,7 +54,7 @@ class MainApp extends StatelessWidget {
             const SizedBox(height: 12),
             paper.Editable(
               size: Sizes.x2l,
-              onChanged: (value) {},
+              onChange: (value) {},
               text: "Editable",
             )
           ]),

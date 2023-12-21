@@ -145,6 +145,10 @@ class _InputTextState extends State<InputText> {
         keyboardType: widget.inputType ?? TextInputType.text,
         obscureText: widget.obscureText!,
         enabled: widget.enabled,
+        onChanged: (value) {
+          print("Marker InputText onChanged: $value");
+          widget.onChange(value);
+        },
         onTapOutside: (PointerDownEvent event) {
           if (widget.onLoseFocus != null) {
             widget.onLoseFocus!();
@@ -158,11 +162,5 @@ class _InputTextState extends State<InputText> {
         autofocus: widget.autoFocus ?? false,
       ),
     );
-  }
-
-  @override
-  void dispose() {
-    _textEditingController.dispose();
-    super.dispose();
   }
 }

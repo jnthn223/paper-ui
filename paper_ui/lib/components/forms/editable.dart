@@ -6,12 +6,12 @@ import 'package:paper_ui/constants/sizes.dart';
 class Editable extends StatefulWidget {
   final String text;
   final Sizes? size;
-  final void Function(String)? onChanged;
+  final ValueChanged<String> onChange;
 
   const Editable({
     Key? key,
     required this.text,
-    this.onChanged,
+    required this.onChange,
     this.size = Sizes.sm,
   }) : super(key: key);
 
@@ -22,17 +22,21 @@ class Editable extends StatefulWidget {
 class _EditableState extends State<Editable> {
   bool isEditing = false;
   late TextEditingController _textEditingController;
+  late String textValue;
 
   @override
   void initState() {
     super.initState();
     _textEditingController = TextEditingController(text: widget.text);
+    textValue = widget.text;
   }
 
   @override
   Widget build(BuildContext context) {
+    print("Editable Widget is being rebuilt!");
     return GestureDetector(
       onTap: () {
+        print("Marker onTap detected");
         setState(() {
           isEditing = true;
         });
@@ -47,17 +51,17 @@ class _EditableState extends State<Editable> {
                   isEditing = false;
                 });
               },
-              onChange: (newValue) {
+              onChange: (value) {
+                widget.onChange(textValue);
                 setState(() {
-                  isEditing = false;
-                  widget.onChanged?.call(newValue);
+                  textValue = value;
                 });
               },
             )
           : Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                widget.text,
+                textValue,
                 style: GoogleFonts.rubik(
                   color: Colors.black,
                   fontSize: getFontSize(widget.size),
@@ -65,11 +69,5 @@ class _EditableState extends State<Editable> {
               ),
             ),
     );
-  }
-
-  @override
-  void dispose() {
-    _textEditingController.dispose();
-    super.dispose();
   }
 }
