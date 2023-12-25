@@ -26,6 +26,8 @@ class _SelectDemoState extends State<SelectDemo> {
           // You can update mySelectedValue here or perform any other actions
         }
       },
+      size: Sizes.x2l,
+      iconBackgroundColor: Colors.redAccent,
     );
   }
 }
