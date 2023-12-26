@@ -9,6 +9,13 @@ class SelectDemo extends StatefulWidget {
 }
 
 class _SelectDemoState extends State<SelectDemo> {
+  String? selectedValue;
+  void dropDownCallback(String? newSelectedValue) {
+    setState(() {
+      selectedValue = newSelectedValue;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Select(
