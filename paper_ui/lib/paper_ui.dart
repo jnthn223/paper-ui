@@ -5,4 +5,5 @@ export "components/forms/checkbox.dart";
 export "components/forms/input.dart";
 export "components/forms/editable.dart";
 export 'components/forms/select.dart';
+export 'components/feedback/alert.dart';
 export 'constants/sizes.dart';
