@@ -4,7 +4,8 @@ import 'package:paper_ui/components/forms/button.dart';
 import 'package:paper_ui/constants/sizes.dart';
 
 class Alert extends StatelessWidget {
-  const Alert({super.key});
+  final List<Widget> actions;
+  const Alert({super.key, required this.actions});
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +30,7 @@ class Alert extends StatelessWidget {
                     fontSize: getFontSize(Sizes.x2l),
                     fontWeight: FontWeight.bold),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               Text(
                 "This cannot be undone. Do you want to proceed?",
                 style: GoogleFonts.rubik(
@@ -40,43 +41,21 @@ class Alert extends StatelessWidget {
           ),
         ),
         ClipRRect(
-          borderRadius: BorderRadius.only(
+          borderRadius: const BorderRadius.only(
             bottomRight: Radius.circular(16),
             bottomLeft: Radius.circular(16),
           ),
           child: Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
                 border: Border(
                   top: BorderSide(color: Colors.black, width: 2),
                 ),
                 color: Colors.grey),
             child: Padding(
-              padding: EdgeInsets.only(bottom: 20, top: 15),
+              padding: const EdgeInsets.only(bottom: 20, top: 15),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Button(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    text: "Nope.",
-                    bgColor: Colors.white,
-                    color: Colors.black,
-                    size: Sizes.md,
-                  ),
-                  SizedBox(
-                    width: 20,
-                  ),
-                  Button(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    text: "Yup!",
-                    bgColor: Colors.black,
-                    color: Colors.white,
-                    size: Sizes.md,
-                  ),
-                ],
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: actions,
               ),
             ),
           ),

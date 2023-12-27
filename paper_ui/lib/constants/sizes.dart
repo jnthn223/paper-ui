@@ -24,11 +24,11 @@ double getFontSize(Sizes? size) {
 EdgeInsets getPadding(Sizes? size) {
   switch (size) {
     case Sizes.xs:
-      return const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0);
+      return const EdgeInsets.symmetric(horizontal: 14.0, vertical: 4.0);
     case Sizes.sm:
-      return const EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0);
+      return const EdgeInsets.symmetric(horizontal: 18.0, vertical: 8.0);
     case Sizes.md:
-      return const EdgeInsets.symmetric(horizontal: 20.0, vertical: 12.0);
+      return const EdgeInsets.symmetric(horizontal: 28.0, vertical: 12.0);
     case Sizes.lg:
       return const EdgeInsets.symmetric(horizontal: 20.0, vertical: 16.0);
     case Sizes.xl:

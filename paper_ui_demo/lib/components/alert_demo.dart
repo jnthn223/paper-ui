@@ -14,7 +14,31 @@ class _AlertDemoState extends State<AlertDemo> {
       context: context,
       barrierDismissible: true, // user must tap button!
       builder: (BuildContext context) {
-        return Alert();
+        return Alert(
+          actions: [
+            Button(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              text: "Nope.",
+              bgColor: Colors.white,
+              color: Colors.black,
+              size: Sizes.md,
+            ),
+            // const SizedBox(
+            //   width: 20,
+            // ),
+            Button(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              text: "Yup!",
+              bgColor: Colors.black,
+              color: Colors.white,
+              size: Sizes.md,
+            ),
+          ],
+        );
       },
     );
   }
