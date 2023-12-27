@@ -25,23 +25,11 @@ class Select extends StatelessWidget {
     return DropdownButtonFormField<String>(
       value: selectedValue,
       onChanged: onChanged,
-      hint: hint != null
-          ? Text(
-              hint!,
-              style: GoogleFonts.rubik(
-                color: Colors.black,
-                fontSize: getFontSize(size),
-              ),
-            )
-          : null,
+      hint: hint != null ? selectText(hint!) : null,
       items: options.map<DropdownMenuItem<String>>((String value) {
         return DropdownMenuItem<String>(
           value: value,
-          child: Text(
-            value,
-            style: GoogleFonts.rubik(
-                color: Colors.black, fontSize: getFontSize(size)),
-          ),
+          child: selectText(value),
         );
       }).toList(),
       elevation: 0,
@@ -54,6 +42,17 @@ class Select extends StatelessWidget {
       ),
       icon: const SizedBox.shrink(),
       isExpanded: true,
+    );
+  }
+
+  Text selectText(String value) {
+    return Text(
+      value,
+      style: GoogleFonts.rubik(
+        color: Colors.black,
+        fontSize: getFontSize(size),
+        height: 1.0,
+      ),
     );
   }
 
