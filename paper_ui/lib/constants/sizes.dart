@@ -28,7 +28,7 @@ EdgeInsets getPadding(Sizes? size) {
     case Sizes.sm:
       return const EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0);
     case Sizes.md:
-      return const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0);
+      return const EdgeInsets.symmetric(horizontal: 20.0, vertical: 12.0);
     case Sizes.lg:
       return const EdgeInsets.symmetric(horizontal: 20.0, vertical: 16.0);
     case Sizes.xl:
