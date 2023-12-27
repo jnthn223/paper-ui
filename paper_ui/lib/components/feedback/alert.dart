@@ -37,6 +37,8 @@ class Alert extends StatelessWidget {
                 Button(
                   onPressed: () {},
                   text: "Nope",
+                  bgColor: Colors.white,
+                  color: Colors.black,
                   size: Sizes.md,
                 ),
                 Button(

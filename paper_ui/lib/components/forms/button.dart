@@ -179,7 +179,7 @@ class _ButtonState extends State<Button> {
               padding: getPadding(widget.size),
               shape: RoundedRectangleBorder(
                 borderRadius:
-                    BorderRadius.circular(getButtonRadius(widget.size)),
+                    BorderRadius.circular(getButtonRadius(widget.size) - 2),
               ),
             ),
             child: widget.content,

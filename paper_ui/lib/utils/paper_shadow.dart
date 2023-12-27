@@ -39,21 +39,18 @@ class PaperShadow extends StatelessWidget {
             shape: BoxShape.rectangle,
             color: Colors.transparent,
             border: Border.all(
-              color: color,
+              color: Colors.black,
               width: getButtonBorderSize(size),
             ),
             borderRadius: BorderRadius.circular(getButtonRadius(size)),
-            boxShadow: isDarkTheme
-                ? []
-                : [
-                    BoxShadow(
-                      color: color,
-                      blurRadius: 0.0,
-                      spreadRadius: 0.0,
-                      offset:
-                          Offset(0, clicked! ? 0.0 : getShadowButtonSize(size)),
-                    ),
-                  ],
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black,
+                blurRadius: 0.0,
+                spreadRadius: 0.0,
+                offset: Offset(0, clicked! ? 0.0 : getShadowButtonSize(size)),
+              ),
+            ],
           ),
           child: content,
         ),
