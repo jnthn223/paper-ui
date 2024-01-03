@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:paper_ui/paper_ui.dart' as paper;
 import 'package:paper_ui/constants/sizes.dart';
 import 'package:paper_ui_demo/components/alert_demo.dart';
+import 'package:paper_ui_demo/components/card_demo.dart';
 import 'package:paper_ui_demo/components/select_demo.dart';
 
 void main() {
@@ -62,7 +63,9 @@ class MainApp extends StatelessWidget {
             const SizedBox(height: 12),
             const SelectDemo(),
             const SizedBox(height: 12),
-            const AlertDemo()
+            const AlertDemo(),
+            const SizedBox(height: 12),
+            const Card_Demo()
           ]),
         ),
       ),
