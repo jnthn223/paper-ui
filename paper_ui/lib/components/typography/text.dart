@@ -22,7 +22,8 @@ class Text extends StatelessWidget {
     super.key,
     this.size,
     this.color,
-  }) : style = GoogleFonts.rubik(fontSize: 30, color: color);
+  }) : style = GoogleFonts.rubik(
+            fontSize: 30, color: color, fontWeight: FontWeight.bold);
 
   @override
   Widget build(BuildContext context) {
