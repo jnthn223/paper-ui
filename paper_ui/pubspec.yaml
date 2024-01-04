@@ -7,15 +7,21 @@ environment:
       sdk: ">=3.0.2 <4.0.0"
       flutter: ">=1.17.0"
 
+scripts:
+      ui-test: "monarch run" #rps ui-test "to run"
+
 dependencies:
       flutter:
             sdk: flutter
       google_fonts: ^5.1.0
+      monarch: ^3.7.0
 
 dev_dependencies:
       flutter_test:
             sdk: flutter
       flutter_lints: ^2.0.0
+      monarch: ^3.0.0
+      build_runner: ^2.1.11
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
