@@ -20,7 +20,10 @@ class HotReload extends StatelessWidget {
           useCases: [
             WidgetbookUseCase(
               name: "Title",
-              builder: (context) => paper.Text("Hello"),
+              builder: (context) => paper.Text.h1(
+                "Hello",
+                color: Colors.white,
+              ),
             )
           ],
         )
