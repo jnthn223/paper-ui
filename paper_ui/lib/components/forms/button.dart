@@ -2,9 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:paper_ui/constants/size.dart';
 import 'package:paper_ui/utils/shadow.dart';
-// import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
+import 'package:widgetbook/widgetbook.dart';
+import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
-// @widgetbook.UseCase(name: 'Button', type: Button)
+@widgetbook.UseCase(
+  name: 'Button',
+  type: Button,
+)
+Button defaultButton(BuildContext context) {
+  return Button(
+    onPressed: () {},
+    text: context.knobs.string(label: "Button Label", initialValue: "Button"),
+    color: context.knobs
+        .color(label: "Button Text Color", initialValue: Colors.black),
+  );
+}
+
 class Button extends StatefulWidget {
   final VoidCallback onPressed;
   final Sizes? size;
