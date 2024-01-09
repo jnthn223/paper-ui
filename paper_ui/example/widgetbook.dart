@@ -1,12 +1,10 @@
 // widgetbook.dart
 
 import 'package:flutter/material.dart';
-import 'package:paper_ui/components/forms/button.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
 // Import the generated directories variable
-import 'main.dart';
 import 'widgetbook.directories.g.dart';
 
 void main() {
@@ -19,28 +17,48 @@ class WidgetbookApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const genericPhoneFramePainter =
+        GenericPhoneFramePainter(innerBodyColor: Colors.white);
+    var devices = [
+      Devices.ios.iPhone13.copyWith(framePainter: genericPhoneFramePainter),
+    ];
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Widgetbook(
+      // darkTheme: ThemeData.dark(),
+      themeMode: ThemeMode.light,
+      home: Widgetbook.material(
         // Use the generated directories variable
         directories: directories,
-        addons: [],
+        addons: [
+          DeviceFrameAddon(
+            devices: devices,
+            initialDevice: devices[0],
+          ),
+          AlignmentAddon(
+            initialAlignment: Alignment.center,
+          ),
+          MaterialThemeAddon(
+            themes: [
+              WidgetbookTheme(
+                name: 'Light',
+                data: ThemeData.light(),
+              ),
+              WidgetbookTheme(
+                name: 'Dark',
+                data: ThemeData.dark(),
+              ),
+            ],
+            initialTheme: WidgetbookTheme(
+              name: 'Light',
+              data: ThemeData.light(),
+            ),
+          ),
+        ],
         integrations: [
           // To make addons & knobs work with Widgetbook Cloud
           WidgetbookCloudIntegration(),
         ],
       ),
-      routes: {
-        '/': (context) =>
-            PaperUIHomepage(), // Replace HomePage with your home page widget
-        '/components/forms/button/button': (context) => Button(
-              onPressed: () {},
-              text: "Hello",
-            ), // Replace ButtonPage with your button widget
-      },
-      builder: (BuildContext context, Widget? navigator) {
-        return navigator ?? Container();
-      },
     );
   }
 }
