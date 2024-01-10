@@ -18,6 +18,32 @@ Button defaultButton(BuildContext context) {
   );
 }
 
+@widgetbook.UseCase(name: "Icon Button", type: Button)
+Button iconButton(BuildContext context) {
+  return Button.icon(
+    onPressed: () {},
+    size: Sizes.sm,
+    bgColor: Colors.white,
+    color: Colors.black,
+    icon: Icons.add_a_photo_sharp,
+  );
+}
+
+@widgetbook.UseCase(
+  name: 'Button with Icon',
+  type: Button,
+)
+Button buttonWithIcon(BuildContext context) {
+  return Button.withIcon(
+    onPressed: () {},
+    text: context.knobs.string(label: "Button Label", initialValue: "Button"),
+    size: Sizes.sm,
+    bgColor: Colors.white,
+    color: Colors.black,
+    rightIcon: Icons.add,
+  );
+}
+
 class Button extends StatefulWidget {
   final VoidCallback onPressed;
   final Sizes? size;

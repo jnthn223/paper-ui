@@ -10,6 +10,12 @@ environment:
 example:
       main: example/widgetbook.dart
 
+scripts:
+      widgetbook-compile: flutter pub run
+            build_runner watch #rps widgetbook-compile "to run widgetbook-compile"
+      widgetbook: "bash flutter run -d edge -t
+            example/widgetbook.dart" #rps widgetbook "to run widgetbook"
+
 dependencies:
       flutter:
             sdk: flutter
