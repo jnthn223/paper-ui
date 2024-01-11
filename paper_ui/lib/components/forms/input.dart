@@ -4,13 +4,26 @@ import 'package:paper_ui/constants/size.dart';
 import 'package:widgetbook/widgetbook.dart';
 import 'package:widgetbook_annotation/widgetbook_annotation.dart';
 
-@UseCase(name: "InputText", type: InputText)
+@UseCase(name: "Default", type: InputText)
 Widget defaultInputText(BuildContext context) {
   return InputText(
     hint: context.knobs
         .string(label: "Hint", initialValue: "Enter your first name"),
     label: context.knobs.string(label: "Label", initialValue: "First Name"),
     onChange: (String value) {},
+    autoFocus: context.knobs.booleanOrNull(
+      label: "autoFocus",
+      initialValue: false,
+    ),
+  );
+}
+
+@UseCase(name: "Underlined", type: InputText)
+Widget underlinedInputText(BuildContext context) {
+  return InputText.underline(
+    onChange: (String value) {},
+    initialValue: context.knobs
+        .stringOrNull(label: "Initial Value", initialValue: "First Name"),
     autoFocus: context.knobs.booleanOrNull(
       label: "autoFocus",
       initialValue: false,
@@ -82,7 +95,8 @@ class InputText extends StatefulWidget {
     this.size,
     this.autoFocus,
     this.textController,
-  })  : decoration = const InputDecoration(
+    this.suffixIcon,
+  }) : decoration = const InputDecoration(
           enabledBorder: UnderlineInputBorder(
             borderSide: BorderSide(width: 2.0, color: Colors.black),
           ),
@@ -92,12 +106,6 @@ class InputText extends StatefulWidget {
           errorBorder: UnderlineInputBorder(
             borderSide: BorderSide(width: 2.0, color: Colors.redAccent),
           ),
-        ),
-        suffixIcon = IconButton(
-          icon: const Icon(Icons.clear),
-          onPressed: () {
-            textController?.clear();
-          },
         );
 
   const InputText.unstyled({
@@ -139,30 +147,35 @@ class _InputTextState extends State<InputText> {
 
   IconButton _clearButton() {
     return IconButton(
-      icon: Icon(Icons.clear),
+      icon: Icon(Icons.clear, size: getFontSize(widget.size)),
       onPressed: textClear,
     );
   }
 
   void textClear() {
+    print("Text Clear is pressed");
     _textEditingController.clear();
   }
 
   @override
   Widget build(BuildContext context) {
+    var textfieldStyle = GoogleFonts.rubik(
+      color: Colors.black,
+      fontSize: getFontSize(widget.size ?? Sizes.sm),
+    );
+    var decorationWithIcon = widget.suffixIcon != null
+        ? widget.decoration?.copyWith(suffixIcon: _clearButton())
+        : widget.decoration;
     return DefaultTextStyle(
-      style: GoogleFonts.rubik(
-        color: Colors.black,
-        fontSize: getFontSize(widget.size ?? Sizes.sm),
-      ),
+      style: textfieldStyle,
+      softWrap: true,
       child: TextField(
-        style: DefaultTextStyle.of(context).style.apply(fontSizeFactor: 1.8),
+        style: textfieldStyle,
         controller: _textEditingController,
         keyboardType: widget.inputType ?? TextInputType.text,
         obscureText: widget.obscureText!,
         enabled: widget.enabled,
         onChanged: (value) {
-          print("Marker InputText onChanged: $value");
           widget.onChange(value);
         },
         onTapOutside: (PointerDownEvent event) {
@@ -172,8 +185,7 @@ class _InputTextState extends State<InputText> {
           FocusScope.of(context).unfocus();
         },
         cursorColor: Colors.black,
-        decoration: widget.decoration?.copyWith(
-            suffixIcon: widget.suffixIcon, suffixIconColor: Colors.black),
+        decoration: decorationWithIcon,
         textAlignVertical: TextAlignVertical.center,
         autofocus: widget.autoFocus ?? false,
       ),

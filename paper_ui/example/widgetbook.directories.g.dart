@@ -54,12 +54,18 @@ final directories = <_i1.WidgetbookNode>[
               builder: _i4.defaultEditable,
             ),
           ),
-          _i1.WidgetbookLeafComponent(
+          _i1.WidgetbookComponent(
             name: 'InputText',
-            useCase: _i1.WidgetbookUseCase(
-              name: 'InputText',
-              builder: _i5.defaultInputText,
-            ),
+            useCases: [
+              _i1.WidgetbookUseCase(
+                name: 'Default',
+                builder: _i5.defaultInputText,
+              ),
+              _i1.WidgetbookUseCase(
+                name: 'Underlined',
+                builder: _i5.underlinedInputText,
+              ),
+            ],
           ),
           _i1.WidgetbookLeafComponent(
             name: 'Select',

@@ -7,13 +7,8 @@ import 'package:widgetbook_annotation/widgetbook_annotation.dart';
 @UseCase(name: "Select", type: Select)
 Widget defaultSelect(BuildContext context) {
   return Select(
-    options: [
-      context.knobs.list(
-          label: "Options",
-          initialOption: "Grapes",
-          options: ["Apple", "Orange", "Grapes"])
-    ],
-    selectedValue: "Apple",
+    options: ["Grapes", "Apple", "Orange"],
+    selectedValue: "Grapes",
     onChanged: (String? value) {},
   );
 }
