@@ -65,23 +65,23 @@ class InputText extends StatefulWidget {
     this.suffixIcon,
     this.textController,
   }) : decoration = InputDecoration(
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(16),
-            borderSide: const BorderSide(
-              width: 2.0, // Specify the border width
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(16),
+              borderSide: const BorderSide(
+                width: 2.0, // Specify the border width
+              ),
             ),
-          ),
-          floatingLabelStyle: GoogleFonts.rubik(color: color, fontSize: 18),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(16),
-            borderSide: BorderSide(width: 2.0, color: color!),
-          ),
-          errorBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(16),
-            borderSide: BorderSide(width: 2.0, color: errorColor!),
-          ),
-          label: Text(label),
-        );
+            floatingLabelStyle: GoogleFonts.rubik(color: color, fontSize: 18),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(16),
+              borderSide: BorderSide(width: 2.0, color: color!),
+            ),
+            errorBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(16),
+              borderSide: BorderSide(width: 2.0, color: errorColor!),
+            ),
+            label: Text(label),
+            contentPadding: EdgeInsets.all(0));
   InputText.underline({
     super.key,
     this.obscureText = false,

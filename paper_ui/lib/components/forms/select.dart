@@ -10,6 +10,8 @@ Widget defaultSelect(BuildContext context) {
     options: ["Grapes", "Apple", "Orange"],
     selectedValue: "Grapes",
     onChanged: (String? value) {},
+    iconBackgroundColor: context.knobs.colorOrNull(
+        label: "Icon Background Color", initialValue: Colors.greenAccent),
   );
 }
 
@@ -33,27 +35,71 @@ class Select extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DropdownButtonFormField<String>(
-      value: selectedValue,
-      onChanged: onChanged,
-      hint: hint != null ? selectText(hint!) : null,
-      items: options.map<DropdownMenuItem<String>>((String value) {
-        return DropdownMenuItem<String>(
-          value: value,
-          child: selectText(value),
-        );
-      }).toList(),
-      elevation: 0,
-      decoration: InputDecoration(
-        focusedBorder: selectOutlineBorder(),
-        enabledBorder: selectOutlineBorder(),
-        suffixIcon: selectSuffixIcon(),
-        contentPadding: const EdgeInsets.symmetric(
-            vertical: 10, horizontal: 10), // Adjust padding as needed
+    return DropdownMenu(
+      menuStyle: MenuStyle(),
+      enableFilter: true,
+      requestFocusOnTap: true,
+      inputDecorationTheme: const InputDecorationTheme(
+        // filled: true,
+        contentPadding: EdgeInsets.symmetric(vertical: 5.0),
       ),
-      icon: const SizedBox.shrink(),
-      isExpanded: true,
+      textStyle: GoogleFonts.rubik(fontSize: getFontSize(size)),
+      dropdownMenuEntries: options.map(
+        (String value) {
+          return DropdownMenuEntry<String>(
+            labelWidget: Text(
+              value,
+              style: GoogleFonts.rubik(
+                fontSize: getFontSize(size),
+              ),
+            ),
+            value: value,
+            label: value,
+          );
+        },
+      ).toList(),
     );
+    // return DropdownButtonFormField(
+    //   items: options.map<DropdownMenuItem<String>>((String value) {
+    //     return DropdownMenuItem<String>(
+    //       value: value,
+    //       child: selectText(value),
+    //     );
+    //   }).toList(),
+    //   isExpanded: true,
+    //   isDense: false, // Set this to false to make the dropdown width extended
+    //   itemHeight: null,
+    //   decoration: InputDecoration(
+    //     hintText: hint,
+    //     filled: true,
+    //     fillColor: Colors.red,
+    //   ),
+    //   alignment: Alignment.center,
+    //   dropdownColor: Colors.blue,
+    //   onChanged: onChanged,
+    // );
+    // return DropdownButtonFormField<String>(
+    //   value: selectedValue,
+    //   onChanged: onChanged,
+    //   hint: hint != null ? selectText(hint!) : null,
+    // items: options.map<DropdownMenuItem<String>>((String value) {
+    //   return DropdownMenuItem<String>(
+    //     value: value,
+    //     child: selectText(value),
+    //   );
+    // }).toList(),
+    //   elevation: 0,
+    //   focusColor: Colors.red,
+    //   decoration: InputDecoration(
+    //     focusedBorder: selectOutlineBorder(),
+    //     enabledBorder: selectOutlineBorder(),
+    //     suffixIcon: selectSuffixIcon(),
+    //     contentPadding: const EdgeInsets.symmetric(
+    //         vertical: 5, horizontal: 5), // Adjust padding as needed
+    //   ),
+    //   icon: const SizedBox.shrink(),
+    //   // isExpanded: true,
+    // );
   }
 
   Text selectText(String value) {
@@ -69,7 +115,9 @@ class Select extends StatelessWidget {
 
   Container selectSuffixIcon() {
     return Container(
-      width: 20,
+      width: 25,
+      height: 60,
+      margin: EdgeInsets.zero,
       decoration: BoxDecoration(
         color: iconBackgroundColor,
         border: Border.all(color: Colors.black, width: 2),
