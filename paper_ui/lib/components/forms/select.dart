@@ -9,6 +9,7 @@ Widget defaultSelect(BuildContext context) {
   return LayoutBuilder(
     builder: (_, constraints) => Select(
       width: constraints.maxWidth,
+      // width: 24,
       options: ["Grapes", "Apple", "Orange"],
       selectedValue: "Grapes",
       onChanged: (String? value) {},
@@ -43,12 +44,13 @@ class Select extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(width);
     return DropdownMenu(
-      menuStyle: MenuStyle(visualDensity: VisualDensity.compact),
       width: width,
-      inputDecorationTheme: const InputDecorationTheme(
-        border: OutlineInputBorder(),
+      inputDecorationTheme: InputDecorationTheme(
+        hintStyle: GoogleFonts.rubik(color: Colors.black),
+        enabledBorder: const OutlineInputBorder(
+            borderSide: BorderSide(color: Colors.black, width: 2)),
+        alignLabelWithHint: true,
       ),
       textStyle: GoogleFonts.rubik(),
       enableSearch: false,
@@ -61,6 +63,7 @@ class Select extends StatelessWidget {
             labelWidget: Text(
               value,
               style: GoogleFonts.rubik(
+
                   // fontSize: getFontSize(size),
                   ),
             ),
