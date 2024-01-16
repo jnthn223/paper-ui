@@ -10,6 +10,8 @@ dependencies:
       flutter:
             sdk: flutter
       google_fonts: ^5.1.0
+      paper_ui:
+            path: C:/dev/projects/packages/paper-ui/paper_ui
 
 dev_dependencies:
       flutter_test:

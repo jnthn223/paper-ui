@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:paper_ui/paper_ui.dart' as paper;
 
 void main() {
   runApp(const MainApp());
@@ -12,7 +13,7 @@ class MainApp extends StatefulWidget {
   State<MainApp> createState() => _MainAppState();
 }
 
-final tabs = ["Home", "Budget", "Tags", "Expenses"];
+final appBarTitles = ["Hello John,", "Budget", "Tags", "Expenses"];
 
 class _MainAppState extends State<MainApp> with SingleTickerProviderStateMixin {
   TabController? _tabController;
@@ -41,7 +42,8 @@ class _MainAppState extends State<MainApp> with SingleTickerProviderStateMixin {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          title: Text(tabs[_currentIndex]), // Use the state variable for title
+          title: paper.Title(
+              appBarTitles[_currentIndex]), // Use the state variable for title
         ),
         body: TabBarView(
           controller: _tabController,
