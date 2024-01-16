@@ -48,8 +48,16 @@ class _MainAppState extends State<MainApp> with SingleTickerProviderStateMixin {
             paper.Button.icon(
               onPressed: () {},
               icon: Icons.person,
+              bgColor: Colors.green,
             )
           ],
+          bottom: const PreferredSize(
+            preferredSize: Size.fromHeight(2.0), // Adjust height as needed
+            child: Divider(
+              thickness: 2.0, // Adjust thickness as needed
+              color: Colors.black, // Customize border color
+            ),
+          ),
         ),
         body: TabBarView(
           controller: _tabController,
