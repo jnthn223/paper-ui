@@ -44,6 +44,12 @@ class _MainAppState extends State<MainApp> with SingleTickerProviderStateMixin {
         appBar: AppBar(
           title: paper.Title(
               appBarTitles[_currentIndex]), // Use the state variable for title
+          actions: [
+            paper.Button.icon(
+              onPressed: () {},
+              icon: Icons.person,
+            )
+          ],
         ),
         body: TabBarView(
           controller: _tabController,
