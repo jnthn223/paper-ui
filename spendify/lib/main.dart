@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:paper_ui/paper_ui.dart' as paper;
+import 'package:spendify/pages/home.dart';
 
 void main() {
   runApp(const MainApp());
@@ -59,14 +60,17 @@ class _MainAppState extends State<MainApp> with SingleTickerProviderStateMixin {
             ),
           ),
         ),
-        body: TabBarView(
-          controller: _tabController,
-          children: const [
-            Center(child: Text('Home Tab')),
-            Center(child: Text('Budget Tab')),
-            Center(child: Text('Tags Tab')),
-            Center(child: Text('Expenses')),
-          ],
+        body: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 20),
+          child: TabBarView(
+            controller: _tabController,
+            children: const [
+              Home(),
+              Text('Budget Tab'),
+              Text('Tags Tab'),
+              Text('Expenses'),
+            ],
+          ),
         ),
         bottomNavigationBar: Container(
           decoration: const BoxDecoration(
