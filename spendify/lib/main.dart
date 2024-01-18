@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:paper_ui/paper_ui.dart' as paper;
-import 'package:spendify/pages/home.dart';
+import 'package:spendify/pages/home/index.dart';
 
 void main() {
   runApp(const MainApp());
