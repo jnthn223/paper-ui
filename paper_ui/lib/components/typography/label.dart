@@ -31,6 +31,13 @@ class Label extends StatelessWidget {
     this.color,
   }) : style = GoogleFonts.rubik(
             fontSize: 20, color: color, fontWeight: FontWeight.w500);
+  Label.heading2(
+    this.data, {
+    super.key,
+    this.size,
+    this.color,
+  }) : style = GoogleFonts.rubik(
+            fontSize: 18, color: color, fontWeight: FontWeight.w500);
 
   @override
   Widget build(BuildContext context) {
