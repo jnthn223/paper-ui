@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:paper_ui/paper_ui.dart';
+import 'package:paper_ui/components/cards/index.dart';
+import 'package:paper_ui/paper_ui.dart' as paper;
 
 class AccountedCategories extends StatelessWidget {
   const AccountedCategories({super.key});
@@ -9,15 +10,17 @@ class AccountedCategories extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Label.heading1("Accounted Categories"),
+        paper.Label.heading1("Accounted Categories"),
         SizedBox(
           height: 10,
           width: 20,
         ),
-        Container(
-          height: 200,
-          width: double.infinity,
-          decoration: BoxDecoration(border: Border.all(color: Colors.black)),
+        ListView(
+          shrinkWrap: true,
+          children: [
+            paper.AccountedCategoriesCard(
+                categoryName: 'Groceries', totalSpend: 30000),
+          ],
         )
       ],
     );
