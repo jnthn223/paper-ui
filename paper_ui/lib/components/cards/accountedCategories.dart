@@ -21,28 +21,37 @@ class AccountedCategoriesCard extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Label.heading2(categoryName),
-                Row(
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                          border: Border.all(color: Colors.black),
-                          color: Colors.blue),
-                      child: Icon(Icons.account_balance_wallet_outlined),
-                    ),
-                    Text("P30,000"),
-                  ],
-                )
-              ],
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Label.heading2(categoryName),
+                  SizedBox(height: 10),
+                  Row(
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.black),
+                            color: Colors.blue,
+                            borderRadius: BorderRadius.circular(5)),
+                        child: Icon(Icons.account_balance_wallet_outlined),
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Label.normal("Total Spend: P30,000"),
+                    ],
+                  )
+                ],
+              ),
             ),
             Container(
-              width: 50,
+              width: 65,
               height: 100,
               decoration: BoxDecoration(color: Colors.green),
+              child: Center(child: Text("50%")),
             )
           ],
         ));
