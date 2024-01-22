@@ -10,6 +10,8 @@ class AccountedCategoriesCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+        margin: EdgeInsets.only(bottom: 10),
+        clipBehavior: Clip.antiAlias,
         decoration: BoxDecoration(
           color: Colors.white,
           border: Border.all(
@@ -48,10 +50,15 @@ class AccountedCategoriesCard extends StatelessWidget {
               ),
             ),
             Container(
-              width: 65,
+              width: 70,
               height: 100,
-              decoration: BoxDecoration(color: Colors.green),
-              child: Center(child: Text("50%")),
+              decoration: BoxDecoration(
+                  color: Colors.green,
+                  borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(14),
+                    bottomRight: Radius.circular(14),
+                  )),
+              child: Center(child: Label.heading2("30%")),
             )
           ],
         ));
