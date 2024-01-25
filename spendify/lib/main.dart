@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:paper_ui/paper_ui.dart' as paper;
-import 'package:spendify/pages/home/index.dart';
+import 'package:spendify/tabs/budget/index.dart';
+import 'package:spendify/tabs/home/index.dart';
 
 void main() {
   runApp(const MainApp());
@@ -67,7 +68,7 @@ class _MainAppState extends State<MainApp> with SingleTickerProviderStateMixin {
             controller: _tabController,
             children: const [
               Home(),
-              Text('Budget Tab'),
+              BudgetTab(),
               Text('Tags Tab'),
               Text('Expenses'),
             ],

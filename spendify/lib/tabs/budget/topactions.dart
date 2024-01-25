@@ -7,19 +7,22 @@ class TopAction extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        LayoutBuilder(
-          builder: (context, constraints) {
-            return InputText(
-              size: Sizes.md,
-              hint: 'Search',
-              label: 'Search',
-              onChange: (value) {},
-            );
-          },
-        )
-      ],
+    return InputText.unstyled(
+      size: Sizes.xs,
+      onChange: (value) {},
+      decoration: InputDecoration(
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(16),
+          borderSide: BorderSide(width: 2.0, color: Colors.black),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(16),
+          borderSide: BorderSide(width: 2.0, color: Colors.grey),
+        ),
+        hintText: "Search",
+        prefixIcon: Icon(Icons.search),
+        prefixIconColor: Colors.grey,
+      ),
     );
   }
 }
