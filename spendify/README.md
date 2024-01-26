@@ -1,3 +1,3 @@
 # spendify
 
-A new Flutter project.
+A budget tracking app that's on style!
