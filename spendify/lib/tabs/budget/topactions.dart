@@ -7,22 +7,41 @@ class TopAction extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InputText.unstyled(
-      size: Sizes.xs,
-      onChange: (value) {},
-      decoration: InputDecoration(
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(16),
-          borderSide: BorderSide(width: 2.0, color: Colors.black),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Expanded(
+          flex: 7,
+          child: InputText.unstyled(
+            size: Sizes.xs,
+            onChange: (value) {},
+            decoration: InputDecoration(
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(16),
+                borderSide: BorderSide(width: 2.0, color: Colors.black),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(16),
+                borderSide: BorderSide(width: 2.0, color: Colors.grey),
+              ),
+              hintText: "Search",
+              prefixIcon: Icon(Icons.search),
+              prefixIconColor: Colors.grey,
+            ),
+          ),
         ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(16),
-          borderSide: BorderSide(width: 2.0, color: Colors.grey),
+        Button.icon(
+          onPressed: () {},
+          icon: Icons.filter_alt,
         ),
-        hintText: "Search",
-        prefixIcon: Icon(Icons.search),
-        prefixIconColor: Colors.grey,
-      ),
+        // Spacer(),
+        // Expanded(
+        //     flex: 3,
+        //     child: Button.icon(
+        //       onPressed: () {},
+        //       icon: Icons.filter_alt,
+        //     )),
+      ],
     );
   }
 }
