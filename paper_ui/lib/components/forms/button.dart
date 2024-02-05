@@ -207,7 +207,8 @@ class _ButtonState extends State<Button> {
         backgroundColor: widget.bgColor,
         foregroundColor: widget.color,
         tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-        padding: getPadding(widget.size),
+        minimumSize: Size.zero,
+        padding: EdgeInsets.all(9),
         shape: CircleBorder(
           side: BorderSide(
             color: widget.color!, // Specify the border color

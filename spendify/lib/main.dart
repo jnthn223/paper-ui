@@ -48,12 +48,16 @@ class _MainAppState extends State<MainApp> with SingleTickerProviderStateMixin {
           title: paper.Title(
               appBarTitles[_currentIndex]), // Use the state variable for title
           actions: [
-            paper.Button.icon(
-              onPressed: () {},
-              icon: Icons.person,
-              bgColor: Colors.green,
+            Padding(
+              padding: EdgeInsets.only(right: 20),
+              child: paper.Button.icon(
+                onPressed: () {},
+                icon: Icons.person,
+                bgColor: Colors.green,
+              ),
             )
           ],
+
           bottom: const PreferredSize(
             preferredSize: Size.fromHeight(2.0), // Adjust height as needed
             child: Divider(

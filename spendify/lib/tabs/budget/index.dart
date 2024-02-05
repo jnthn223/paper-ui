@@ -7,14 +7,10 @@ class BudgetTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    return const SingleChildScrollView(
       child: Column(
         mainAxisSize: MainAxisSize.max,
         children: [
-          // Container(
-          //   height: 100,
-          //   child: TopAction(),
-          // ),
           TopAction(),
           Text("Hello"),
         ],

@@ -9,6 +9,7 @@ class TopAction extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisSize: MainAxisSize.max,
       children: [
         Expanded(
           flex: 7,
@@ -30,11 +31,14 @@ class TopAction extends StatelessWidget {
             ),
           ),
         ),
+        // Spacer(flex: 1),
+        SizedBox(
+          width: 10,
+        ),
         Button.icon(
           onPressed: () {},
           icon: Icons.filter_alt,
         ),
-        // Spacer(),
         // Expanded(
         //     flex: 3,
         //     child: Button.icon(
