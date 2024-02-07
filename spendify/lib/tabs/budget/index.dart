@@ -26,6 +26,9 @@ class BudgetTab extends StatelessWidget {
                   title: "January 1st Payout",
                   startDate: "01/01/2024",
                   endDate: "01/31/2024",
+                  budget: '3000',
+                  spent: '2000',
+                  saved: '1000',
                 )
               ],
             ),
