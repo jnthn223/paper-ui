@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:paper_ui/paper_ui.dart' as paper;
 import 'package:spendify/tabs/budget/index.dart';
 import 'package:spendify/tabs/home/index.dart';
+import 'package:spendify/tabs/tags/index.dart';
 
 void main() {
   runApp(const MainApp());
@@ -73,7 +74,7 @@ class _MainAppState extends State<MainApp> with SingleTickerProviderStateMixin {
             children: const [
               Home(),
               BudgetTab(),
-              Text('Tags Tab'),
+              TagsTab(),
               Text('Expenses'),
             ],
           ),
